@@ -1,0 +1,110 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/commander/Abathur.png</file>
+        <file>resource/commander/Alarak.png</file>
+        <file>resource/commander/Artanis.png</file>
+        <file>resource/commander/Dehaka.png</file>
+        <file>resource/commander/Fenix.png</file>
+        <file>resource/commander/Horner.png</file>
+        <file>resource/commander/Karax.png</file>
+        <file>resource/commander/Kerrigan.png</file>
+        <file>resource/commander/Mengsk.png</file>
+        <file>resource/commander/Nova.png</file>
+        <file>resource/commander/Raynor.png</file>
+        <file>resource/commander/Stetmann.png</file>
+        <file>resource/commander/Stukov.png</file>
+        <file>resource/commander/Swann.png</file>
+        <file>resource/commander/Tychus.png</file>
+        <file>resource/commander/Vorazun.png</file>
+        <file>resource/commander/Zagara.png</file>
+        <file>resource/commander/Zeratul.png</file>
+        <file>resource/commander/amon.jpg</file>
+        <file>resource/mutator/Afraid of the Dark.png</file>
+        <file>resource/mutator/Aggressive Deployment.png</file>
+        <file>resource/mutator/Alien Incubation.png</file>
+        <file>resource/mutator/Avenger.png</file>
+        <file>resource/mutator/Barrier.png</file>
+        <file>resource/mutator/Black Death.png</file>
+        <file>resource/mutator/BlizzCon Challenge.png</file>
+        <file>resource/mutator/Blizzard.png</file>
+        <file>resource/mutator/Bloodlust.png</file>
+        <file>resource/mutator/Boom Bots.png</file>
+        <file>resource/mutator/Chaos Studios.png</file>
+        <file>resource/mutator/Concussive Attacks.png</file>
+        <file>resource/mutator/Dark Mirror.png</file>
+        <file>resource/mutator/Darkness.png</file>
+        <file>resource/mutator/Diffusion.png</file>
+        <file>resource/mutator/Double-Edged.png</file>
+        <file>resource/mutator/Eminent Domain.png</file>
+        <file>resource/mutator/Endurance.png</file>
+        <file>resource/mutator/Evasive Maneuvers.png</file>
+        <file>resource/mutator/Fatal Attraction.png</file>
+        <file>resource/mutator/Fear.png</file>
+        <file>resource/mutator/Fireworks.png</file>
+        <file>resource/mutator/Gift Exchange.png</file>
+        <file>resource/mutator/Going Nuclear.png</file>
+        <file>resource/mutator/Great Wall.png</file>
+        <file>resource/mutator/Hardened Will.png</file>
+        <file>resource/mutator/Heroes from the Storm.png</file>
+        <file>resource/mutator/Infestation Station.png</file>
+        <file>resource/mutator/Inspiration.png</file>
+        <file>resource/mutator/Just Die!.png</file>
+        <file>resource/mutator/Kill Bots.png</file>
+        <file>resource/mutator/Laser Drill.png</file>
+        <file>resource/mutator/Lava Burst.png</file>
+        <file>resource/mutator/Level Playing Field.png</file>
+        <file>resource/mutator/Life Leech.png</file>
+        <file>resource/mutator/Long Range.png</file>
+        <file>resource/mutator/Lucky Envelopes.png</file>
+        <file>resource/mutator/Mag-nificent.png</file>
+        <file>resource/mutator/Matryoshka.png</file>
+        <file>resource/mutator/Micro Transactions.png</file>
+        <file>resource/mutator/Mineral Shields.png</file>
+        <file>resource/mutator/Minesweeper.png</file>
+        <file>resource/mutator/Missile Command.png</file>
+        <file>resource/mutator/Moment Of Silence.png</file>
+        <file>resource/mutator/Mothership.png</file>
+        <file>resource/mutator/Mutually Assured Destruction.png</file>
+        <file>resource/mutator/Nap Time.png</file>
+        <file>resource/mutator/Naughty List.png</file>
+        <file>resource/mutator/Necronomicon.png</file>
+        <file>resource/mutator/Nuclear Mines.png</file>
+        <file>resource/mutator/Old HotS.png</file>
+        <file>resource/mutator/Old Times.png</file>
+        <file>resource/mutator/Orbital Strike.png</file>
+        <file>resource/mutator/Outbreak.png</file>
+        <file>resource/mutator/Photon Overload.png</file>
+        <file>resource/mutator/Polarity.png</file>
+        <file>resource/mutator/Power Overwhelming.png</file>
+        <file>resource/mutator/Propagators.png</file>
+        <file>resource/mutator/Purifier Beam.png</file>
+        <file>resource/mutator/Random.png</file>
+        <file>resource/mutator/Repulsive Field.png</file>
+        <file>resource/mutator/Rip Field Generators.png</file>
+        <file>resource/mutator/Scorched Earth.png</file>
+        <file>resource/mutator/Self Destruction.png</file>
+        <file>resource/mutator/Shapeshifters.png</file>
+        <file>resource/mutator/Sharing Is Caring.png</file>
+        <file>resource/mutator/Shortsighted.png</file>
+        <file>resource/mutator/Slim Pickings.png</file>
+        <file>resource/mutator/Speed Freaks.png</file>
+        <file>resource/mutator/Stone Zealots.png</file>
+        <file>resource/mutator/Supreme Commander.png</file>
+        <file>resource/mutator/Temporal Field.png</file>
+        <file>resource/mutator/The Mist.png</file>
+        <file>resource/mutator/The Usual Suspects.png</file>
+        <file>resource/mutator/Time Warp.png</file>
+        <file>resource/mutator/Transmutation.png</file>
+        <file>resource/mutator/Trick or Treat.png</file>
+        <file>resource/mutator/Turkey Shoot.png</file>
+        <file>resource/mutator/Twister.png</file>
+        <file>resource/mutator/Vertigo.png</file>
+        <file>resource/mutator/Void Reanimators.png</file>
+        <file>resource/mutator/Void Rifts.png</file>
+        <file>resource/mutator/Walking Infested.png</file>
+        <file>resource/mutator/We Move Unseen.png</file>
+        <file>resource/mutators.csv</file>
+        <file>resource/vs.png</file>
+        <file>resource/mutator/I Collect I Change.png</file>
+    </qresource>
+</RCC>
