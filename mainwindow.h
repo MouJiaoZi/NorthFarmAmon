@@ -10,6 +10,7 @@
 #include <qlistwidget.h>
 #include <QSettings>
 #include <QSignalMapper>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class mainWindow; }

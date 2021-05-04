@@ -204,16 +204,39 @@ void mainWindow::on_pushButton_clicked()
     }
 
     //随机因子
-    int mutatorCount = settings->value("BrutalPlus/MutatorAmount", 10).toInt(), id = GetRandomMutator();
+    int mutatorCount = settings->value("BrutalPlus/MutatorAmount", 10).toInt(), id = GetRandomMutator(),
+        minScore = settings->value("BrutalPlus/MutatorMinScore", 0).toInt(), maxScore = settings->value("BrutalPlus/MutatorMaxScore", 999).toInt(),
+        totalScore = 0, currentAttempt = 0, maxAttempt = 50;
     QStringList mutators;
-    for(int i=0; i<mutatorCount; i++)
+    do
     {
-        while(mutators.contains(QString::number(id)))
-            id = GetRandomMutator();
-        mutators<<QString::number(id);
-        brutalPlusMutatorIcon[i]->setStyleSheet(mutator_icon[id]);
-        brutalPlusMutatorName[i]->setText(mutator_name[id]);
-        brutalPlusMutatorScore[i]->setText(QString::number(mutator_info[id][1]) + "分");
+        mutators.clear();
+        totalScore = 0;
+        currentAttempt++;
+        for(int i=0; i<mutatorCount; i++)
+        {
+            while(mutators.contains(QString::number(id)))
+                id = GetRandomMutator();
+            mutators<<QString::number(id);
+            totalScore = totalScore + mutator_info[id][1];
+        }
+    }
+    while((mutators.size() != mutatorCount || totalScore < minScore || totalScore > maxScore) && currentAttempt <= maxAttempt);
+    if(mutators.size() == mutatorCount && totalScore >= minScore && totalScore <= maxScore)
+    {
+        for(int i=0; i<mutators.size(); i++)
+        {
+            int idd = mutators[i].toInt();
+            brutalPlusMutatorIcon[i]->setStyleSheet(mutator_icon[idd]);
+            brutalPlusMutatorName[i]->setText(mutator_name[idd]);
+            brutalPlusMutatorScore[i]->setText(QString::number(mutator_info[idd][1]) + "分");
+            qDebug()<<i<<":"<<mutator_name[idd]<<"  "<<mutator_info[idd][1];
+        }
+        qDebug()<<"Total Score: "<<totalScore<<", Attempt: "<<currentAttempt;
+    }
+    else
+    {
+        QMessageBox::warning(NULL, "警告", "经过"+QString::number(currentAttempt)+"次尝试后仍未获得符合设置的突变因子组合，请检查您的设置。", QMessageBox::Yes, QMessageBox::Yes);
     }
 }
 
