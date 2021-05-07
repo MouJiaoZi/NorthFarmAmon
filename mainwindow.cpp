@@ -100,6 +100,10 @@ mainWindow::mainWindow(QWidget *parent)
     ui->settingBrutalPlusMaxMutatorScoreEditor->setValidator(aIntValidator);
     if(settings->value("BrutalPlus/RandomCommander", 0).toInt() == 1)
         ui->settingBrutalPlusRandomCommanderCheckBox->toggle();
+    if(settings->value("BrutalPlus/RandomMap", 0).toInt() == 1)
+        ui->settingBrutalPlusRandomMapCheckBox->toggle();
+    if(settings->value("BrutalPlus/RandomAI", 0).toInt() == 1)
+        ui->settingBrutalPlusRandomAICheckBox->toggle();
     ui->settingBrutalPlusMutatorAmountSelector->setCurrentIndex(settings->value("BrutalPlus/MutatorAmount", 10).toInt());
     ui->settingBrutalPlusMinMutatorScoreEditor->setText(settings->value("BrutalPlus/MutatorMinScore", 1).toString());
     ui->settingBrutalPlusMaxMutatorScoreEditor->setText(settings->value("BrutalPlus/MutatorMaxScore", 1).toString());
@@ -206,7 +210,7 @@ void mainWindow::on_pushButton_clicked()
     //随机因子
     int mutatorCount = settings->value("BrutalPlus/MutatorAmount", 10).toInt(), id = GetRandomMutator(),
         minScore = settings->value("BrutalPlus/MutatorMinScore", 0).toInt(), maxScore = settings->value("BrutalPlus/MutatorMaxScore", 999).toInt(),
-        totalScore = 0, currentAttempt = 0, maxAttempt = 50;
+        totalScore = 0, currentAttempt = 0, maxAttempt = 150;
     QStringList mutators;
     do
     {
@@ -227,9 +231,7 @@ void mainWindow::on_pushButton_clicked()
         for(int i=0; i<mutators.size(); i++)
         {
             int idd = mutators[i].toInt();
-            brutalPlusMutatorIcon[i]->setStyleSheet(mutator_icon[idd]);
-            brutalPlusMutatorName[i]->setText(mutator_name[idd]);
-            brutalPlusMutatorScore[i]->setText(QString::number(mutator_info[idd][1]) + "分");
+            SetMutator(i, idd);
             qDebug()<<i<<":"<<mutator_name[idd]<<"  "<<mutator_info[idd][1];
         }
         qDebug()<<"Total Score: "<<totalScore<<", Attempt: "<<currentAttempt;
@@ -500,4 +502,28 @@ void mainWindow::on_settingBrutalPlusMinMutatorScoreEditor_textChanged(const QSt
 void mainWindow::on_settingBrutalPlusMaxMutatorScoreEditor_textChanged(const QString &arg1) //最大因子总分
 {
     settings->setValue("BrutalPlus/MutatorMaxScore", arg1);
+}
+
+void mainWindow::on_settingBrutalPlusRandomMapCheckBox_toggled(bool checked) //随机地图
+{
+    if(checked)
+    {
+        settings->setValue("BrutalPlus/RandomMap", 1);
+    }
+    else
+    {
+        settings->setValue("BrutalPlus/RandomMap", 0);
+    }
+}
+
+void mainWindow::on_settingBrutalPlusRandomAICheckBox_toggled(bool checked) //随机AI
+{
+    if(checked)
+    {
+        settings->setValue("BrutalPlus/RandomAI", 1);
+    }
+    else
+    {
+        settings->setValue("BrutalPlus/RandomAI", 0);
+    }
 }

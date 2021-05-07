@@ -58,6 +58,10 @@ private slots:
 
     void on_seettingCommanderEnableCheckBox_toggled(bool checked);
 
+    void on_settingBrutalPlusRandomAICheckBox_toggled(bool checked);
+
+    void on_settingBrutalPlusRandomMapCheckBox_toggled(bool checked);
+
 private:
     Ui::mainWindow *ui;
     QSettings *settings;
