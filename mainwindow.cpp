@@ -8,90 +8,34 @@ mainWindow::mainWindow(QWidget *parent)
     settings = new QSettings("config.ini", QSettings::IniFormat);
 
     //初始化变量
+    //设置界面
+    //指挥官CheckBox变量
+    for(int i=0; i<18; i++)
+    {
+        settingCommanderCheckbox[i] = (QCheckBox*)ui->settingCommanderGrid->itemAt(i)->widget();
+    }
+    //地图CheckBox变量
+    for(int i=0; i<15; i++)
+    {
+        settingMapCheckbox[i] = (QCheckBox*)ui->settingMapGrid->itemAt(i)->widget();
+    }
+    //残酷+页面元素变量
     for(int i=0; i<10; i++)
     {
         brutalPlusMutatorIcon[i] = (QWidget*)ui->brutalPlusMutatorIconList->itemAt(i)->widget();
         brutalPlusMutatorName[i] = (QLabel*)ui->brutalPlusMutatorNameList->itemAt(i)->widget();
         brutalPlusMutatorScore[i] = (QLabel*)ui->brutalPlusMutatorScoreList->itemAt(i)->widget();
     }
-    LoadMutators();
 
-    //载入设置
-    //因子设置
-    //  创建因子列表
-    for(int i=0; i<max_mutators; i++)
-    {
-        if(mutator_info[i][2] == 0)
-        {
-            if(mutator_info[i][3] == 1)
-            {
-                QListWidget* list = ui->settingEnableMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
-                item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
-            }
-            else if(mutator_info[i][3] == 0)
-            {
-                QListWidget* list = ui->settingDisableMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
-                item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
-            }
-        }
-        else
-        {
-            if(mutator_info[i][3] == 1)
-            {
-                QListWidget* list = ui->settingEnableCMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
-                item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
-            }
-            else if(mutator_info[i][3] == 0)
-            {
-                QListWidget* list = ui->settingDisableCMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
-                item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
-            }
-        }
-    }
-    //  设置全局禁用按钮
+    //载入信息
+    LoadMutators();
+    LoadCommanders();
+
+    //设置全局禁用按钮
     if(settings->value("disableAllMutators", 0).toInt() == 1)
-        ui->settingDisableAllMutatorCheckBox->toggle();
+        ui->settingDisableAllMutatorCheckBox->setChecked(true);
     if(settings->value("disableAllCMutators", 0).toInt() == 1)
-        ui->settingDisableAllCMutatorCheckBox->toggle();
-    //  设置指挥官启用
-    settingCommanderCheckbox[0] = ui->settingCommanderEnable_0;
-    settingCommanderCheckbox[1] = ui->settingCommanderEnable_1;
-    settingCommanderCheckbox[2] = ui->settingCommanderEnable_2;
-    settingCommanderCheckbox[3] = ui->settingCommanderEnable_3;
-    settingCommanderCheckbox[4] = ui->settingCommanderEnable_4;
-    settingCommanderCheckbox[5] = ui->settingCommanderEnable_5;
-    settingCommanderCheckbox[6] = ui->settingCommanderEnable_6;
-    settingCommanderCheckbox[7] = ui->settingCommanderEnable_7;
-    settingCommanderCheckbox[8] = ui->settingCommanderEnable_8;
-    settingCommanderCheckbox[9] = ui->settingCommanderEnable_9;
-    settingCommanderCheckbox[10] = ui->settingCommanderEnable_10;
-    settingCommanderCheckbox[11] = ui->settingCommanderEnable_11;
-    settingCommanderCheckbox[12] = ui->settingCommanderEnable_12;
-    settingCommanderCheckbox[13] = ui->settingCommanderEnable_13;
-    settingCommanderCheckbox[14] = ui->settingCommanderEnable_14;
-    settingCommanderCheckbox[15] = ui->settingCommanderEnable_15;
-    settingCommanderCheckbox[16] = ui->settingCommanderEnable_16;
-    settingCommanderCheckbox[17] = ui->settingCommanderEnable_17;
-    QStringList disabledCommander = settings->value("disabledCommanders").toString().split(",");
-    if(disabledCommander[0] != "")
-    {
-        for(int i=0; i<disabledCommander.size(); i++)
-            settingCommanderCheckbox[disabledCommander[i].toInt()]->setChecked(false);
-    }
-    for(int i=0; i<18; i++)
-        connect(settingCommanderCheckbox[i], SIGNAL(toggled(bool)), this, SLOT(on_seettingCommanderEnableCheckBox_toggled(bool)));
+        ui->settingDisableAllCMutatorCheckBox->setChecked(true);
 
     //自定义残酷+设置
     QIntValidator *aIntValidator = new QIntValidator;
@@ -154,6 +98,7 @@ void mainWindow::LoadMutators()
 {
     QFile inFile(":/resource/mutators.csv");    //0=mutator_id 1=mutator_name 2=mutator_icon 3=mutator_score 4=mutator_is_custom 5=mutator_tooltip
     QStringList lines;/*行数据*/
+    QStringList disabledMutator = settings->value("disabledMutators").toString().split(","); //因子禁用设置
     if (inFile.open(QIODevice::ReadOnly))
     {
         QTextStream stream_text(&inFile);
@@ -161,40 +106,95 @@ void mainWindow::LoadMutators()
         {
             lines.push_back(stream_text.readLine());
         }
-        for (int j = 0; j < lines.size(); j++)
+        for (int i = 0; i < lines.size(); i++)
         {
-            QString line = lines.at(j);
+            QString line = lines.at(i);
             QStringList split = line.split(",");/*列数据*/
-            /*
-             *  0   id          0   1   2   3   4   5   6
-             *  1   score       5   5   5   5   5   5   5
-             *  2   is_custom   0   0   0   0   0   1   1
-             *  3   is_enabled  1   1   1   0   0   1   1
-             */
-            mutator_info[j][0] = split.at(0).toInt(); //id
-            mutator_info[j][1] = split.at(3).toInt(); //score
-            mutator_info[j][2] = split.at(4).toInt(); //is_custom
-            mutator_info[j][3] = 1; //is_enable
-            mutator_name<<split.at(1);
-            mutator_icon<<split.at(2);
-            mutator_tooltip<<split.at(5);
+            if(disabledMutator.contains(QString::number(i)))
+                split<<"0";
+            else
+                split<<"1";
+            mutatorInfo<<split;
         }
-        max_mutators = lines.size();
         inFile.close();
-        qDebug()<<max_mutators<<"\n"<<mutator_name;
     }
-    QStringList disabledMutators = settings->value("disabledMutators").toString().split(",");
-    if(disabledMutators[0] != "")
+    //  创建因子列表
+    for(int i=0; i<max_mutators; i++)
     {
-        for(int i=0; i<disabledMutators.size(); i++)
-            mutator_info[disabledMutators[i].toInt()][3] = 0;
+        if(mutator_info[i][2] == 0)
+        {
+            if(mutator_info[i][3] == 1)
+            {
+                QListWidget* list = ui->settingEnableMutatorList;
+                list->addItem(mutator_name[i]);
+                QListWidgetItem* item = list->item(list->count() - 1);
+                item->setWhatsThis(QString::number(i));
+                item->setToolTip(mutator_tooltip[i]);
+            }
+            else if(mutator_info[i][3] == 0)
+            {
+                QListWidget* list = ui->settingDisableMutatorList;
+                list->addItem(mutator_name[i]);
+                QListWidgetItem* item = list->item(list->count() - 1);
+                item->setWhatsThis(QString::number(i));
+                item->setToolTip(mutator_tooltip[i]);
+            }
+        }
+        else
+        {
+            if(mutator_info[i][3] == 1)
+            {
+                QListWidget* list = ui->settingEnableCMutatorList;
+                list->addItem(mutator_name[i]);
+                QListWidgetItem* item = list->item(list->count() - 1);
+                item->setWhatsThis(QString::number(i));
+                item->setToolTip(mutator_tooltip[i]);
+            }
+            else if(mutator_info[i][3] == 0)
+            {
+                QListWidget* list = ui->settingDisableCMutatorList;
+                list->addItem(mutator_name[i]);
+                QListWidgetItem* item = list->item(list->count() - 1);
+                item->setWhatsThis(QString::number(i));
+                item->setToolTip(mutator_tooltip[i]);
+            }
+        }
     }
-    QStringList disabledCMutators = settings->value("disabledCMutators").toString().split(",");
-    if(disabledCMutators[0] != "")
+}
+
+void mainWindow::LoadCommanders()
+{
+    QFile inFile(":/resource/commanders.csv");
+    QStringList lines;/*行数据*/
+    QStringList disabledCommander = settings->value("disabledCommanders").toString().split(","); //指挥官禁用设置
+    if (inFile.open(QIODevice::ReadOnly))
     {
-        for(int i=0; i<disabledCMutators.size(); i++)
-            mutator_info[disabledCMutators[i].toInt()][3] = 0;
+        QTextStream stream_text(&inFile);
+        while (!stream_text.atEnd())
+        {
+            lines.push_back(stream_text.readLine());
+        }
+        //commanderInfo = new QStringList[lines.size()];
+        for (int i=0; i<lines.size(); i++)
+        {
+            QString line = lines.at(i);
+            QStringList split = line.split(",");//0=commander id, 1=commander name, 2=v1, 3=v2, 4=v3, 5~8=commander or v enabled or disabled 1=enabled 0=disabled
+            if(disabledCommander.contains(QString::number(i)))
+                split<<"0";
+            else
+                split<<"1";
+            commanderInfo<<split;
+        }
+        inFile.close();
     }
+    //设置CheckBox
+    for(int i=0; i<commanderInfo.size(); i++)
+    {
+        settingCommanderCheckbox[i]->setChecked(commanderInfo[i][5].toInt() == 1);
+        settingCommanderCheckbox[i]->setText(commanderInfo[i][1]);
+        connect(settingCommanderCheckbox[i], SIGNAL(toggled(bool)), this, SLOT(on_seettingCommanderEnableCheckBox_toggled(bool)));
+    }
+    qDebug()<<commanderInfo;
 }
 
 //残酷+ 随机按钮
@@ -442,8 +442,7 @@ void mainWindow::on_settingDisableAllCMutatorCheckBox_toggled(bool checked)
     }
 }
 
-//指挥官禁用设置
-void mainWindow::on_seettingCommanderEnableCheckBox_toggled(bool checked)
+void mainWindow::on_seettingCommanderEnableCheckBox_toggled(bool checked) //指挥官禁用设置
 {
     if(checked)
         qDebug()<<"nothing.";
@@ -451,7 +450,10 @@ void mainWindow::on_seettingCommanderEnableCheckBox_toggled(bool checked)
     for(int i=0; i<18; i++)
     {
         if(!settingCommanderCheckbox[i]->isChecked())
+        {
             commanderSet = commanderSet + QString::number(i) + ",";
+            commanderInfo[i][5] = "0";
+        }
     }
     commanderSet.chop(1);
     settings->setValue("disabledCommanders", commanderSet);

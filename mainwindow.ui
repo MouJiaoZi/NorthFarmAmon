@@ -644,6 +644,7 @@
          <property name="styleSheet">
           <string notr="true">QWidget{
 image: url(:/resource/mutator/Random.png);
+
 }
 </string>
          </property>
@@ -1707,259 +1708,520 @@ image: url(:/resource/mutator/Random.png);
         <x>729</x>
         <y>9</y>
         <width>281</width>
-        <height>371</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="title">
-       <string>启用以下指挥官（仅对随机指挥官有效）</string>
+       <string>启用以下指挥官</string>
       </property>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>16</x>
-         <y>27</y>
-         <width>251</width>
-         <height>25</height>
+         <x>10</x>
+         <y>30</y>
+         <width>260</width>
+         <height>141</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_0">
-          <property name="whatsThis">
-           <string>0</string>
+       <layout class="QGridLayout" name="settingCommanderGrid">
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_04">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
-           <string>雷诺</string>
+           <string/>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_1">
-          <property name="whatsThis">
-           <string>1</string>
-          </property>
-          <property name="text">
-           <string>凯瑞甘</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_2">
-          <property name="whatsThis">
-           <string>2</string>
-          </property>
-          <property name="text">
-           <string>阿塔尼斯</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>16</x>
-         <y>51</y>
-         <width>251</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_3">
-          <property name="whatsThis">
-           <string>3</string>
-          </property>
-          <property name="text">
-           <string>斯旺</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_4">
-          <property name="whatsThis">
-           <string>4</string>
-          </property>
-          <property name="text">
-           <string>扎加拉</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_5">
-          <property name="whatsThis">
-           <string>5</string>
-          </property>
-          <property name="text">
-           <string>沃拉尊</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>16</x>
-         <y>75</y>
-         <width>251</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_6">
-          <property name="whatsThis">
-           <string>6</string>
-          </property>
-          <property name="text">
-           <string>凯拉克斯</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_7">
-          <property name="whatsThis">
-           <string>7</string>
-          </property>
-          <property name="text">
-           <string>阿巴瑟</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_8">
-          <property name="whatsThis">
-           <string>8</string>
-          </property>
-          <property name="text">
-           <string>阿拉纳克</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>16</x>
-         <y>98</y>
-         <width>251</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_9">
-          <property name="whatsThis">
-           <string>9</string>
-          </property>
-          <property name="text">
-           <string>诺娃</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_10">
-          <property name="whatsThis">
-           <string>10</string>
-          </property>
-          <property name="text">
-           <string>斯托科夫</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_11">
-          <property name="whatsThis">
-           <string>11</string>
-          </property>
-          <property name="text">
-           <string>菲尼克斯</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>16</x>
-         <y>122</y>
-         <width>251</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_12">
-          <property name="whatsThis">
-           <string>12</string>
-          </property>
-          <property name="text">
-           <string>德哈卡</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_13">
-          <property name="whatsThis">
-           <string>13</string>
-          </property>
-          <property name="text">
-           <string>霍纳与汉</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
+        <item row="4" column="2">
          <widget class="QCheckBox" name="settingCommanderEnable_14">
-          <property name="whatsThis">
-           <string>14</string>
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
-           <string>泰凯斯</string>
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_16">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_09">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_13">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="settingCommanderEnable_02">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_07">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QCheckBox" name="settingCommanderEnable_17">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_15">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_06">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_03">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_12">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_10">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="settingCommanderEnable_08">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="settingCommanderEnable_11">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="settingCommanderEnable_05">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="settingCommanderEnable_00">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="settingCommanderEnable_01">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -1968,49 +2230,449 @@ image: url(:/resource/mutator/Random.png);
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>729</x>
+        <y>189</y>
+        <width>281</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>82</width>
+        <height>18</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>启用以下地图</string>
+      </property>
+      <widget class="QWidget" name="layoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>16</x>
-         <y>146</y>
-         <width>251</width>
-         <height>25</height>
+         <x>9</x>
+         <y>29</y>
+         <width>261</width>
+         <height>151</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_15">
-          <property name="whatsThis">
-           <string>15</string>
+       <layout class="QGridLayout" name="settingMapGrid">
+        <item row="2" column="1">
+         <widget class="QCheckBox" name="settingMapEnable_08">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
-           <string>泽拉图</string>
+           <string/>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_16">
-          <property name="whatsThis">
-           <string>16</string>
+        <item row="4" column="0">
+         <widget class="QCheckBox" name="settingMapEnable_13">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
-           <string>斯台特曼</string>
+           <string/>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QCheckBox" name="settingCommanderEnable_17">
-          <property name="whatsThis">
-           <string>17</string>
+        <item row="4" column="2">
+         <widget class="QCheckBox" name="settingMapEnable_15">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
-           <string>蒙斯克</string>
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QCheckBox" name="settingMapEnable_07">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QCheckBox" name="settingMapEnable_09">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="settingMapEnable_05">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QCheckBox" name="settingMapEnable_14">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QCheckBox" name="settingMapEnable_11">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="settingMapEnable_04">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QCheckBox" name="settingMapEnable_12">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="settingMapEnable_10">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="settingMapEnable_03">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QCheckBox" name="settingMapEnable_06">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="settingMapEnable_02">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="settingMapEnable_01">
+          <property name="minimumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>82</width>
+            <height>18</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
           </property>
           <property name="checked">
            <bool>true</bool>

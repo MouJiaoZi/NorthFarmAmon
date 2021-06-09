@@ -106,5 +106,25 @@
         <file>resource/mutators.csv</file>
         <file>resource/vs.png</file>
         <file>resource/mutator/I Collect I Change.png</file>
+        <file>resource/map/ui_loading_coop_jarbanpoint.png</file>
+        <file>resource/map/ui_loading_coop_kaldirshuttle.png</file>
+        <file>resource/map/ui_loading_coop_korhalshift.png</file>
+        <file>resource/map/ui_loading_coop_malwarfare.png</file>
+        <file>resource/map/ui_loading_coop_meinhoffdaynight.png</file>
+        <file>resource/map/ui_loading_coop_pnp.png</file>
+        <file>resource/map/ui_loading_coop_scytheofamon.png</file>
+        <file>resource/map/ui_loading_coop_shakurastemple.png</file>
+        <file>resource/map/ui_loading_coop_tarsonistrain.png</file>
+        <file>resource/map/ui_loading_coop_ulnarlocks.png</file>
+        <file>resource/map/ui_loading_coop_veridiacourier.png</file>
+        <file>resource/maps.csv</file>
+        <file>resource/map/ui_loading_coop_cradleofdeath.png</file>
+        <file>resource/map/ui_battlenet_glue_coop_mappreview_random.png</file>
+        <file>resource/map/ui_loading_coop_belshirescort.png</file>
+        <file>resource/map/ui_loading_coop_chainofascension.png</file>
+        <file>resource/map/ui_loading_coop_charthrasher.png</file>
+        <file>resource/mutator/ui_coop_ingame_mutatorframe.png</file>
+        <file>resource/commanders.csv</file>
+        <file>resource/ai.csv</file>
     </qresource>
 </RCC>

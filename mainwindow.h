@@ -67,11 +67,17 @@ private:
     QSettings *settings;
 
     QCheckBox* settingCommanderCheckbox[18];
+    QCheckBox* settingMapCheckbox[15];
 
     QWidget* brutalPlusMutatorIcon[10];
     QLabel* brutalPlusMutatorName[10];
     QLabel* brutalPlusMutatorScore[10];
 
+    //Database
+    //Commander
+    QList<QStringList> commanderInfo;//0=commander id, 1=commander name, 2=v1, 3=v2, 4=v3, 5~8=is commander or v enabled
+    //Mutator
+    QList<QStringList> mutatorInfo;//0=id, 1=name, 2=icon, 3=score, 4=is custom, 5=tooltip, 6=is enabled
     int max_mutators = 0;
     int mutator_info[256][4];
     /*
@@ -84,9 +90,10 @@ private:
     QStringList mutator_icon;
     QStringList mutator_tooltip;
 
-    int mutators[11] = {0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};  //Custom Mutators = Custom Mutator ID + 1000.
+    //int mutators[11] = {0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};  //Custom Mutators = Custom Mutator ID + 1000.
 
     void LoadMutators();
+    void LoadCommanders();
     void SaveMutatorEnableInfo();
     void SaveCMutatorEnableInfo();
     int GetRandomMutator();
