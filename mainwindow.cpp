@@ -30,6 +30,7 @@ mainWindow::mainWindow(QWidget *parent)
     //载入信息
     LoadMutators();
     LoadCommanders();
+    LoadMaps();
 
     //设置全局禁用按钮
     if(settings->value("disableAllMutators", 0).toInt() == 1)
@@ -58,42 +59,53 @@ mainWindow::~mainWindow()
     delete ui;
 }
 
-//获取随机因子
-int mainWindow::GetRandomMutator()
-{
-    bool allMutatorDisabled = (settings->value("disableAllMutators", 0).toInt() == 1);
-    bool allCMutatorDisabled = (settings->value("disableAllCMutators", 0).toInt() == 1);
-    int id = QRandomGenerator::global()->bounded(0, max_mutators);
-    while(mutator_info[id][3] == 0 || (allMutatorDisabled && mutator_info[id][2] == 0) || (allCMutatorDisabled && mutator_info[id][2] == 1))
-    {
-        id = QRandomGenerator::global()->bounded(0, max_mutators);
-    }
-    return id;
-}
-
-int mainWindow::GetRandomCommander(int anotherCMD)
-{
-    QStringList disabledCommanders = settings->value("disabledCommanders").toString().split(",");
-    int id = QRandomGenerator::global()->bounded(0, 17);
-    while(id == anotherCMD || disabledCommanders.contains(QString::number(id)))
-        id = QRandomGenerator::global()->bounded(0, 17);
-    return id;
-}
-
 bool mainWindow::SetMutator(int list_id, int mutator_id)
 {
     QWidget* icon = ui->brutalPlusMutatorIconList->itemAt(list_id)->widget();
     QLabel* name = (QLabel*)ui->brutalPlusMutatorNameList->itemAt(list_id)->widget();
     QLabel* score = (QLabel*)ui->brutalPlusMutatorScoreList->itemAt(list_id)->widget();
 
-    icon->setStyleSheet(mutator_icon[mutator_id]);
-    name->setText(mutator_name[mutator_id]);
-    score->setText(QString::number(mutator_info[mutator_id][1])+"分");
-    icon->setToolTip(mutator_tooltip[mutator_id]);
-    name->setToolTip(mutator_tooltip[mutator_id]);
+    icon->setStyleSheet(mutatorInfo[mutator_id][2]);
+    name->setText(mutatorInfo[mutator_id][1]);
+    score->setText(mutatorInfo[mutator_id][3]+"分");
+    icon->setToolTip(mutatorInfo[mutator_id][5]);
+    name->setToolTip(mutatorInfo[mutator_id][5]);
     return true;
 }
 
+//获取随机因子
+int mainWindow::GetRandomMutator()
+{
+    bool allMutatorDisabled = (settings->value("disableAllMutators", 0).toInt() == 1);
+    bool allCMutatorDisabled = (settings->value("disableAllCMutators", 0).toInt() == 1);
+    int id = QRandomGenerator::global()->bounded(0, mutatorInfo.size()-1);
+    while(mutatorInfo[id][6] == "0" || (allMutatorDisabled && mutatorInfo[id][4] == "0") || (allCMutatorDisabled && mutatorInfo[id][4] == "1"))
+    {
+        id = QRandomGenerator::global()->bounded(0, mutatorInfo.size()-1);
+    }
+    return id;
+}
+
+//获取随机指挥官
+int mainWindow::GetRandomCommander(int anotherCMD)
+{
+    QStringList disabledCommanders = settings->value("disabledCommanders").toString().split(",");
+    int id = QRandomGenerator::global()->bounded(0, commanderInfo.size()-1);
+    while(id == anotherCMD || disabledCommanders.contains(QString::number(id)))
+        id = QRandomGenerator::global()->bounded(0, commanderInfo.size()-1);
+    return id;
+}
+
+//获取随机地图
+int mainWindow::GetRandomMap()
+{
+    int map = QRandomGenerator::global()->bounded(0, mapInfo.size()-1);
+    while(mapInfo[map][3] == "0")
+        map = QRandomGenerator::global()->bounded(0, mapInfo.size()-1);
+    return map;
+}
+
+//载入突变因子
 void mainWindow::LoadMutators()
 {
     QFile inFile(":/resource/mutators.csv");    //0=mutator_id 1=mutator_name 2=mutator_icon 3=mutator_score 4=mutator_is_custom 5=mutator_tooltip
@@ -116,52 +128,57 @@ void mainWindow::LoadMutators()
                 split<<"1";
             mutatorInfo<<split;
         }
+        qDebug()<<mutatorInfo[0][6];
         inFile.close();
     }
     //  创建因子列表
-    for(int i=0; i<max_mutators; i++)
+    QListWidget* OListEnable = ui->settingEnableMutatorList;
+    QListWidget* OListDisable = ui->settingDisableMutatorList;
+    QListWidget* CListEnable = ui->settingEnableCMutatorList;
+    QListWidget* CListDisable = ui->settingDisableCMutatorList;
+    for(int i=0; i<mutatorInfo.size(); i++)
     {
-        if(mutator_info[i][2] == 0)
+        if(mutatorInfo[i][4] == "0")
         {
-            if(mutator_info[i][3] == 1)
+            if(mutatorInfo[i][6] == "1")
             {
-                QListWidget* list = ui->settingEnableMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
+
+                OListEnable->addItem(mutatorInfo[i][1]);
+                QListWidgetItem* item = OListEnable->item(OListEnable->count() - 1);
                 item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
+                item->setToolTip(mutatorInfo[i][5]);
             }
-            else if(mutator_info[i][3] == 0)
+            else if(mutatorInfo[i][6] == "0")
             {
-                QListWidget* list = ui->settingDisableMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
+                OListDisable->addItem(mutatorInfo[i][1]);
+                QListWidgetItem* item = OListDisable->item(OListDisable->count() - 1);
                 item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
+                item->setToolTip(mutatorInfo[i][5]);
             }
         }
-        else
+        else if(mutatorInfo[i][4] == "1")
         {
-            if(mutator_info[i][3] == 1)
+            if(mutatorInfo[i][6] == "1")
             {
-                QListWidget* list = ui->settingEnableCMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
+
+                CListEnable->addItem(mutatorInfo[i][1]);
+                QListWidgetItem* item = CListEnable->item(CListEnable->count() - 1);
                 item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
+                item->setToolTip(mutatorInfo[i][5]);
             }
-            else if(mutator_info[i][3] == 0)
+            else if(mutatorInfo[i][6] == "0")
             {
-                QListWidget* list = ui->settingDisableCMutatorList;
-                list->addItem(mutator_name[i]);
-                QListWidgetItem* item = list->item(list->count() - 1);
+
+                CListDisable->addItem(mutatorInfo[i][1]);
+                QListWidgetItem* item = CListDisable->item(CListDisable->count() - 1);
                 item->setWhatsThis(QString::number(i));
-                item->setToolTip(mutator_tooltip[i]);
+                item->setToolTip(mutatorInfo[i][5]);
             }
         }
     }
 }
 
+//载入指挥官
 void mainWindow::LoadCommanders()
 {
     QFile inFile(":/resource/commanders.csv");
@@ -174,7 +191,6 @@ void mainWindow::LoadCommanders()
         {
             lines.push_back(stream_text.readLine());
         }
-        //commanderInfo = new QStringList[lines.size()];
         for (int i=0; i<lines.size(); i++)
         {
             QString line = lines.at(i);
@@ -192,9 +208,41 @@ void mainWindow::LoadCommanders()
     {
         settingCommanderCheckbox[i]->setChecked(commanderInfo[i][5].toInt() == 1);
         settingCommanderCheckbox[i]->setText(commanderInfo[i][1]);
-        connect(settingCommanderCheckbox[i], SIGNAL(toggled(bool)), this, SLOT(on_seettingCommanderEnableCheckBox_toggled(bool)));
+        connect(settingCommanderCheckbox[i], SIGNAL(toggled(bool)), this, SLOT(on_settingCommanderEnableCheckBox_toggled(bool)));
     }
-    qDebug()<<commanderInfo;
+}
+
+//载入地图
+void mainWindow::LoadMaps()
+{
+    QFile inFile(":/resource/maps.csv");
+    QStringList lines;/*行数据*/
+    QStringList disabledMap = settings->value("disabledMaps").toString().split(","); //指挥官禁用设置
+    if (inFile.open(QIODevice::ReadOnly))
+    {
+        QTextStream stream_text(&inFile);
+        while (!stream_text.atEnd())
+        {
+            lines.push_back(stream_text.readLine());
+        }
+        for (int i=0; i<lines.size(); i++)
+        {
+            QString line = lines.at(i);
+            QStringList split = line.split(",");//0=id, 1=name, 2=img, 3=is enabled
+            if(disabledMap.contains(QString::number(i)))
+                split<<"0";
+            else
+                split<<"1";
+            mapInfo<<split;
+        }
+        inFile.close();
+    }
+    for(int i=0; i<mapInfo.size(); i++)
+    {
+        settingMapCheckbox[i]->setChecked(mapInfo[i][3] == "1");
+        settingMapCheckbox[i]->setText(mapInfo[i][1]);
+        connect(settingMapCheckbox[i], SIGNAL(toggled(bool)), this, SLOT(on_settingMapEnableCheckBox_toggled(bool)));
+    }
 }
 
 //残酷+ 随机按钮
@@ -222,7 +270,7 @@ void mainWindow::on_pushButton_clicked()
             while(mutators.contains(QString::number(id)))
                 id = GetRandomMutator();
             mutators<<QString::number(id);
-            totalScore = totalScore + mutator_info[id][1];
+            totalScore = totalScore + mutatorInfo[id][3].toInt();
         }
     }
     while((mutators.size() != mutatorCount || totalScore < minScore || totalScore > maxScore) && currentAttempt <= maxAttempt);
@@ -232,13 +280,21 @@ void mainWindow::on_pushButton_clicked()
         {
             int idd = mutators[i].toInt();
             SetMutator(i, idd);
-            qDebug()<<i<<":"<<mutator_name[idd]<<"  "<<mutator_info[idd][1];
+            qDebug()<<i<<":"<<mutatorInfo[idd][1]<<mutatorInfo[idd][3];
         }
         qDebug()<<"Total Score: "<<totalScore<<", Attempt: "<<currentAttempt;
     }
     else
     {
         QMessageBox::warning(NULL, "警告", "经过"+QString::number(currentAttempt)+"次尝试后仍未获得符合设置的突变因子组合，请检查您的设置。", QMessageBox::Yes, QMessageBox::Yes);
+    }
+
+    //随机地图
+    if(settings->value("BrutalPlus/RandomMap", 0).toInt() == 1)
+    {
+        int map = GetRandomMap();
+        ui->brutalPlusMapNameLabel->setText(mapInfo[map][1]);
+        ui->brutalPlusMapImage->setStyleSheet(mapInfo[map][2]);
     }
 }
 
@@ -255,11 +311,11 @@ void mainWindow::on_settingEnableMutatorList_itemDoubleClicked(QListWidgetItem *
     QListWidget* list2 = ui->settingDisableMutatorList;
     list->removeItemWidget(item);
     delete item;
-    list2->addItem(mutator_name[id]);
+    list2->addItem(mutatorInfo[id][1]);
     QListWidgetItem* item2 = list2->item(list2->count() - 1);
     item2->setWhatsThis(QString::number(id));
-    item2->setToolTip(mutator_tooltip[id]);
-    mutator_info[id][3] = 0;
+    item2->setToolTip(mutatorInfo[id][5]);
+    mutatorInfo[id][6] = "0";
     SaveMutatorEnableInfo();
 }
 
@@ -273,11 +329,11 @@ void mainWindow::on_settingDisableMutatorButton_clicked()   //点击按钮将其
         list->removeItemWidget(item);
         delete item;
         QListWidget* list2 = ui->settingDisableMutatorList;
-        list2->addItem(mutator_name[id]);
+        list2->addItem(mutatorInfo[id][1]);
         QListWidgetItem* item2 = list2->item(list2->count() - 1);
         item2->setWhatsThis(QString::number(id));
-        item2->setToolTip(mutator_tooltip[id]);
-        mutator_info[id][3] = 0;
+        item2->setToolTip(mutatorInfo[id][5]);
+        mutatorInfo[id][6] = "0";
         SaveMutatorEnableInfo();
     }
 }
@@ -289,11 +345,11 @@ void mainWindow::on_settingDisableMutatorList_itemDoubleClicked(QListWidgetItem 
     QListWidget* list2 = ui->settingDisableMutatorList;
     list2->removeItemWidget(item);
     delete item;
-    list->addItem(mutator_name[id]);
+    list->addItem(mutatorInfo[id][1]);
     QListWidgetItem* item2 = list->item(list->count() - 1);
     item2->setWhatsThis(QString::number(id));
-    item2->setToolTip(mutator_tooltip[id]);
-    mutator_info[id][3] = 1;
+    item2->setToolTip(mutatorInfo[id][5]);
+    mutatorInfo[id][6] = "1";
     SaveMutatorEnableInfo();
 }
 
@@ -307,27 +363,13 @@ void mainWindow::on_settingEnableMutatorButton_clicked()    //点击按钮将其
         list->removeItemWidget(item);
         delete item;
         QListWidget* list2 = ui->settingEnableMutatorList;
-        list2->addItem(mutator_name[id]);
+        list2->addItem(mutatorInfo[id][1]);
         QListWidgetItem* item2 = list2->item(list2->count() - 1);
         item2->setWhatsThis(QString::number(id));
-        item2->setToolTip(mutator_tooltip[id]);
-        mutator_info[id][3] = 1;
+        item2->setToolTip(mutatorInfo[id][5]);
+        mutatorInfo[id][6] = "1";
         SaveMutatorEnableInfo();
     }
-}
-
-void mainWindow::SaveMutatorEnableInfo()
-{
-    QString info;
-    for(int i=0; i<max_mutators; i++)
-    {
-        if(mutator_info[i][3] == 0 && mutator_info[i][2] == 0)
-        {
-            info = info + QString::number(i) + ",";
-        }
-    }
-    info.chop(1);
-    settings->setValue("disabledMutators", info);
 }
 
 void mainWindow::on_settingDisableAllMutatorCheckBox_toggled(bool checked)
@@ -355,12 +397,12 @@ void mainWindow::on_settingEnableCMutatorList_itemDoubleClicked(QListWidgetItem 
     QListWidget* list2 = ui->settingDisableCMutatorList;
     list->removeItemWidget(item);
     delete item;
-    list2->addItem(mutator_name[id]);
+    list2->addItem(mutatorInfo[id][1]);
     QListWidgetItem* item2 = list2->item(list2->count() - 1);
     item2->setWhatsThis(QString::number(id));
-    item2->setToolTip(mutator_tooltip[id]);
-    mutator_info[id][3] = 0;
-    SaveCMutatorEnableInfo();
+    item2->setToolTip(mutatorInfo[id][5]);
+    mutatorInfo[id][6] = "0";
+    SaveMutatorEnableInfo();
 }
 
 void mainWindow::on_settingDisableCMutatorButton_clicked()   //点击按钮将其禁用
@@ -373,12 +415,12 @@ void mainWindow::on_settingDisableCMutatorButton_clicked()   //点击按钮将�
         list->removeItemWidget(item);
         delete item;
         QListWidget* list2 = ui->settingDisableCMutatorList;
-        list2->addItem(mutator_name[id]);
+        list2->addItem(mutatorInfo[id][1]);
         QListWidgetItem* item2 = list2->item(list2->count() - 1);
         item2->setWhatsThis(QString::number(id));
-        item2->setToolTip(mutator_tooltip[id]);
-        mutator_info[id][3] = 0;
-        SaveCMutatorEnableInfo();
+        item2->setToolTip(mutatorInfo[id][5]);
+        mutatorInfo[id][6] = "0";
+        SaveMutatorEnableInfo();
     }
 }
 
@@ -389,12 +431,12 @@ void mainWindow::on_settingDisableCMutatorList_itemDoubleClicked(QListWidgetItem
     QListWidget* list2 = ui->settingDisableCMutatorList;
     list2->removeItemWidget(item);
     delete item;
-    list->addItem(mutator_name[id]);
+    list->addItem(mutatorInfo[id][1]);
     QListWidgetItem* item2 = list->item(list->count() - 1);
     item2->setWhatsThis(QString::number(id));
-    item2->setToolTip(mutator_tooltip[id]);
-    mutator_info[id][3] = 1;
-    SaveCMutatorEnableInfo();
+    item2->setToolTip(mutatorInfo[id][5]);
+    mutatorInfo[id][6] = "1";
+    SaveMutatorEnableInfo();
 }
 
 void mainWindow::on_settingEnableCMutatorButton_clicked()    //点击按钮将其启用
@@ -407,27 +449,13 @@ void mainWindow::on_settingEnableCMutatorButton_clicked()    //点击按钮将�
         list->removeItemWidget(item);
         delete item;
         QListWidget* list2 = ui->settingEnableCMutatorList;
-        list2->addItem(mutator_name[id]);
+        list2->addItem(mutatorInfo[id][1]);
         QListWidgetItem* item2 = list2->item(list2->count() - 1);
         item2->setWhatsThis(QString::number(id));
-        item2->setToolTip(mutator_tooltip[id]);
-        mutator_info[id][3] = 1;
+        item2->setToolTip(mutatorInfo[id][5]);
+        mutatorInfo[id][6] = "1";
         SaveMutatorEnableInfo();
     }
-}
-
-void mainWindow::SaveCMutatorEnableInfo()
-{
-    QString info;
-    for(int i=0; i<max_mutators; i++)
-    {
-        if(mutator_info[i][3] == 0 && mutator_info[i][2] == 1)
-        {
-            info = info + QString::number(i) + ",";
-        }
-    }
-    info.chop(1);
-    settings->setValue("disabledCMutators", info);
 }
 
 void mainWindow::on_settingDisableAllCMutatorCheckBox_toggled(bool checked)
@@ -442,12 +470,30 @@ void mainWindow::on_settingDisableAllCMutatorCheckBox_toggled(bool checked)
     }
 }
 
-void mainWindow::on_seettingCommanderEnableCheckBox_toggled(bool checked) //指挥官禁用设置
+void mainWindow::SaveMutatorEnableInfo()
 {
-    if(checked)
-        qDebug()<<"nothing.";
+    QString info;
+    for(int i=0; i<mutatorInfo.size(); i++)
+    {
+        if(mutatorInfo[i][6] == "0")
+        {
+            info = info + QString::number(i) + ",";
+        }
+    }
+    info.chop(1);
+    settings->setValue("disabledMutators", info);
+}
+
+/*
+ * 指挥官禁用设置
+ *
+ *
+ */
+
+void mainWindow::on_settingCommanderEnableCheckBox_toggled(bool checked)
+{
     QString commanderSet;
-    for(int i=0; i<18; i++)
+    for(int i=0; i<commanderInfo.size(); i++)
     {
         if(!settingCommanderCheckbox[i]->isChecked())
         {
@@ -457,6 +503,27 @@ void mainWindow::on_seettingCommanderEnableCheckBox_toggled(bool checked) //指�
     }
     commanderSet.chop(1);
     settings->setValue("disabledCommanders", commanderSet);
+}
+
+/*
+ * 地图禁用设置
+ *
+ *
+ */
+
+void mainWindow::on_settingMapEnableCheckBox_toggled(bool checked)
+{
+    QString mapSet;
+    for(int i=0; i<mapInfo.size(); i++)
+    {
+        if(!settingMapCheckbox[i]->isChecked())
+        {
+            mapSet = mapSet + QString::number(i) + ",";
+            mapInfo[i][3] = "0";
+        }
+    }
+    mapSet.chop(1);
+    settings->setValue("disabledMaps", mapSet);
 }
 
 //自定义残酷+设置

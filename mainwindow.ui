@@ -72,7 +72,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>自定义残酷+</string>
+      <string>残酷+</string>
      </attribute>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
@@ -745,8 +745,8 @@ image: url(:/resource/mutator/Random.png);
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>500</y>
+        <x>510</x>
+        <y>490</y>
         <width>80</width>
         <height>20</height>
        </rect>
@@ -758,7 +758,7 @@ image: url(:/resource/mutator/Random.png);
        <string>PushButton</string>
       </property>
      </widget>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="amon_header" native="true">
       <property name="geometry">
        <rect>
         <x>860</x>
@@ -771,7 +771,7 @@ image: url(:/resource/mutator/Random.png);
        <string notr="true">image: url(:/resource/commander/amon.jpg);</string>
       </property>
      </widget>
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QWidget" name="icon_vs" native="true">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -796,10 +796,10 @@ image: url(:/resource/mutator/Random.png);
      <widget class="QComboBox" name="brutalPlusCommanderSelector_1">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>29</y>
-        <width>431</width>
-        <height>101</height>
+        <x>110</x>
+        <y>680</y>
+        <width>31</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -983,10 +983,10 @@ image: url(:/resource/mutator/Random.png);
      <widget class="QComboBox" name="brutalPlusCommanderSelector_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>140</y>
-        <width>431</width>
-        <height>101</height>
+        <x>170</x>
+        <y>680</y>
+        <width>51</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1224,6 +1224,55 @@ image: url(:/resource/mutator/Random.png);
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>322</width>
+        <height>210</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QWidget" name="brutalPlusMapImage" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>320</width>
+           <height>180</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>320</width>
+           <height>180</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">image: url(:/resource/map/ui_battlenet_glue_coop_mappreview_random.png);</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="brutalPlusMapNameLabel">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string> </string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -1326,6 +1375,7 @@ image: url(:/resource/mutator/Random.png);
        <property name="font">
         <font>
          <family>Microsoft YaHei</family>
+         <pointsize>9</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1451,6 +1501,7 @@ image: url(:/resource/mutator/Random.png);
        <property name="font">
         <font>
          <family>Microsoft YaHei</family>
+         <pointsize>9</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1508,6 +1559,7 @@ image: url(:/resource/mutator/Random.png);
        <property name="font">
         <font>
          <family>Microsoft YaHei</family>
+         <pointsize>9</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1677,6 +1729,7 @@ image: url(:/resource/mutator/Random.png);
        <property name="font">
         <font>
          <family>Microsoft YaHei</family>
+         <pointsize>9</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1695,6 +1748,7 @@ image: url(:/resource/mutator/Random.png);
        <property name="font">
         <font>
          <family>Microsoft YaHei</family>
+         <pointsize>9</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1714,7 +1768,7 @@ image: url(:/resource/mutator/Random.png);
       <property name="title">
        <string>启用以下指挥官</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>

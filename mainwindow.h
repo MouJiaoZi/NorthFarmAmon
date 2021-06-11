@@ -56,7 +56,9 @@ private slots:
 
     void on_settingBrutalPlusMaxMutatorScoreEditor_textChanged(const QString &arg1);
 
-    void on_seettingCommanderEnableCheckBox_toggled(bool checked);
+    void on_settingCommanderEnableCheckBox_toggled(bool checked);
+
+    void on_settingMapEnableCheckBox_toggled(bool checked);
 
     void on_settingBrutalPlusRandomAICheckBox_toggled(bool checked);
 
@@ -78,26 +80,18 @@ private:
     QList<QStringList> commanderInfo;//0=commander id, 1=commander name, 2=v1, 3=v2, 4=v3, 5~8=is commander or v enabled
     //Mutator
     QList<QStringList> mutatorInfo;//0=id, 1=name, 2=icon, 3=score, 4=is custom, 5=tooltip, 6=is enabled
-    int max_mutators = 0;
-    int mutator_info[256][4];
-    /*
-     *  0   id          0   1   2   3   4   5   6
-     *  1   score       5   5   5   5   5   5   5
-     *  2   is_custom   0   0   0   0   0   1   1
-     *  3   is_enabled  1   1   1   0   0   1   1
-     */
-    QStringList mutator_name;
-    QStringList mutator_icon;
-    QStringList mutator_tooltip;
+    //Map
+    QList<QStringList> mapInfo;//0=id, 1=name, 2=img, 3=is enabled
 
     //int mutators[11] = {0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};  //Custom Mutators = Custom Mutator ID + 1000.
 
     void LoadMutators();
     void LoadCommanders();
+    void LoadMaps();
     void SaveMutatorEnableInfo();
-    void SaveCMutatorEnableInfo();
     int GetRandomMutator();
     int GetRandomCommander(int anotherCMD = -1);
+    int GetRandomMap();
 
 };
 #endif // MAINWINDOW_H

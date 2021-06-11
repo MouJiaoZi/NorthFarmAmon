@@ -52,7 +52,7 @@
 51,虚空裂隙,image: url(:/resource/mutator/Void Rifts.png);,10,0,虚空裂隙周期性地出现在随机位置，并会不断地生成敌方单位，直至其被摧毁。
 52,行尸走肉,image: url(:/resource/mutator/Walking Infested.png);,2,0,敌方单位在死亡时生成大量的被感染的人类，具体数量由死亡单位的生命值决定。
 53,来去无踪,image: url(:/resource/mutator/We Move Unseen.png);,3,0,所有敌方单位永久隐形。
-54,暴雪的挑战,image: url(:/resource/mutator/BlizzCon Challenge.png);,10,1,开局只有单突变因子，随着时间推移最终出现10个突变因子。突变因子是固定顺序出现的。
+54,暴雪的挑战,image: url(:/resource/mutator/BlizzCon Challenge.png);,20,1,开局只有单突变因子，随着时间推移最终出现10个突变因子。突变因子是固定顺序出现的。
 55,嗜血,image: url(:/resource/mutator/Bloodlust.png);,4,1,敌方单位随生命值降低而提高攻击速度和移动速度，并降低受到的伤害。
 56,混乱工作室,image: url(:/resource/mutator/Chaos Studios.png);,10,1,突变因子会随机选择，并在任务中周期性轮换。
 57,黑暗镜像,image: url(:/resource/mutator/Dark Mirror.png);,10,1,敌人的进攻波次中将包含玩家目前拥有的作战单位。
@@ -65,18 +65,18 @@
 64,母舰,image: url(:/resource/mutator/Mothership.png);,3,1,敌人的母舰游荡在战场上攻击玩家的单位。
 65,死灵集结,image: url(:/resource/mutator/Necronomicon.png);,3,1,被击杀的玩家单位将在敌人的建筑旁复活并攻击玩家。
 66,核子地雷,image: url(:/resource/mutator/Nuclear Mines.png);,4,1,搭载核弹头的地雷遍布整个战场。
-67,互斥领域,image: url(:/resource/mutator/Repulsive Field.png);,9,1,敌人的攻击具有击退效果。
-68,撕裂力场,image: url(:/resource/mutator/Rip Field Generators.png);,8,1,撕裂力场发生器遍布整个战场，其产生的撕裂力场会持续对进入的玩家单位造成伤害，玩家可以摧毁撕裂力场发生器。
-69,变形虫,image: url(:/resource/mutator/Shapeshifters.png);,7,1,变形虫将加入进攻波次，同时游荡在敌人阵地中。变形虫可以变为玩家的任意单位。
-70,最高指挥官,image: url(:/resource/mutator/Supreme Commander.png);,8,1,大型单位活力提高25%且体型更大，其他单位活力降低25%且体型更小。所有单位获得+2射程。
-71,恐怖迷雾,image: url(:/resource/mutator/The Mist.png);,10,1,恐怖的迷雾游荡在战场中，迷雾中有看不见的可怕威胁。
+67,互斥领域,image: url(:/resource/mutator/Repulsive Field.png);,8,1,敌人的攻击具有击退效果。
+68,撕裂力场,image: url(:/resource/mutator/Rip Field Generators.png);,3,1,撕裂力场发生器遍布整个战场，其产生的撕裂力场会持续对进入的玩家单位造成伤害，玩家可以摧毁撕裂力场发生器。
+69,变形虫,image: url(:/resource/mutator/Shapeshifters.png);,4,1,变形虫将加入进攻波次，同时游荡在敌人阵地中。变形虫可以变为玩家的任意单位。
+70,最高指挥官,image: url(:/resource/mutator/Supreme Commander.png);,5,1,大型单位活力提高25%且体型更大，其他单位活力降低25%且体型更小。所有单位获得+2射程。
+71,恐怖迷雾,image: url(:/resource/mutator/The Mist.png);,5,1,恐怖的迷雾游荡在战场中，迷雾中有看不见的可怕威胁。
 72,风暴英雄二,image: url(:/resource/mutator/The Usual Suspects.png);,10,1,合作任务中的玩家英雄加入埃蒙，随着进攻波次向玩家发起攻击。
 73,旧风暴英雄,image: url(:/resource/mutator/Old HotS.png);,25,1,旧版风暴英雄机制：每一波进攻都包含固定数量的风暴英雄。
 74,惧怕黑暗,image: url(:/resource/mutator/Afraid of the Dark.png);,5,1,通过各种方式提供的视野都会受到极大的限制，只有你镜头中的视野一切正常。
-75,焰火秀,image: url(:/resource/mutator/Fireworks.png);,8,1,敌人死亡时会发射灿烂的烟花，对你周围的单位造成伤害。
+75,焰火秀,image: url(:/resource/mutator/Fireworks.png);,4,1,敌人死亡时会发射灿烂的烟花，对你周围的单位造成伤害。
 76,礼尚往来,image: url(:/resource/mutator/Gift Exchange.png);,3,1,地图上会周期性地放置一些礼物。你们不抢就会便宜了埃蒙哟!
 77,幸运红包,image: url(:/resource/mutator/Lucky Envelopes.png);,0,1,塞满物资的节日红包，被随机丢弃在地图的各个角落。
-78,杀生业报,image: url(:/resource/mutator/Naughty List.png);,9,1,玩家的单位和建筑每消灭一个敌人，其所受到的伤害就会提高。
-79,补给共享,image: url(:/resource/mutator/Sharing Is Caring.png);,10,1,你和你的搭档共享补给，双方的部队单位会占用你们共有的补给。
+78,杀生业报,image: url(:/resource/mutator/Naughty List.png);,5,1,玩家的单位和建筑每消灭一个敌人，其所受到的伤害就会提高。
+79,补给共享,image: url(:/resource/mutator/Sharing Is Caring.png);,2,1,你和你的搭档共享补给，双方的部队单位会占用你们共有的补给。
 80,糖果碗,image: url(:/resource/mutator/Trick or Treat.png);,3,1,平民们会拜访你的糖果碗寻找零食，这些零食是通过花费晶体矿产生的。如果没有零食可以享用，平民们就会变身成随机的敌方单位。
 81,捕杀火鸡,image: url(:/resource/mutator/Turkey Shoot.png);,2,1,补给只能通过击杀火鸡产生，它们在整个地图上漫游这么做可能会激怒其它的火鸡。
